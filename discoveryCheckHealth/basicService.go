@@ -1,4 +1,4 @@
-package main
+package discoveryCheckHealth
 
 import (
 	"bytes"
@@ -83,18 +83,6 @@ type HttpCheck struct {
 	Interval string `json:"interval, omitempty"`
 }
 
-/*
-type HttpCheck struct {
-	ID            string `json:"id, omitempty"`
-	Name          string `json:"name, omitempty"`
-	Http          string `json:"http, omitempty"`
-	TlsSkipVerify bool   `json:"tls_skip_verify, omitempty"`
-	Method        string `json:"method, omitempty"`
-	Header        string `json:"header, omitempty"`
-	Interval      string `json:"interval, omitempty"`
-	Timeout       string `json:"timeout, omitempty"`
-}
-*/
 func GetOutboundIP() net.IP {
 	conn, err := net.Dial("udp", "8.8.8.8:80")
 	if err != nil {
