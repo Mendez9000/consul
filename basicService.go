@@ -28,7 +28,7 @@ func main() {
 	http.HandleFunc("/", handler)
 	localIp := "http://" + GetOutboundIP().String()
 	httpCheck := HttpCheck{Http: localIp + ":" + strconv.Itoa(port), Method: "POST", Interval: "4s"}
-	service := Service{ID: timestamp, Name: "Orders", Port: port, Address: localIp, Check: httpCheck}
+	service := Service{ID: timestamp, Name: "orders", Port: port, Address: localIp, Check: httpCheck}
 	doRegistration(service)
 	defer doDeregister(service)
 
