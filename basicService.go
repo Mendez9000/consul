@@ -46,7 +46,7 @@ func main() {
 }
 
 func doRegistration(service Service) {
-	endpointRegister := "http://localhost:8500/v1/agent/service/register"
+	endpointRegister := "http://192.168.14.163:8500/v1/agent/service/register"
 
 	d, _ := json.Marshal(service)
 
@@ -63,7 +63,7 @@ func doRegistration(service Service) {
 }
 
 func doDeregister(service Service) {
-	endpointRegister := "http://localhost:8500/v1/agent/service/deregister/" + service.ID
+	endpointRegister := "http://192.168.14.163:8500/v1/agent/service/deregister/" + service.ID
 	client := &http.Client{}
 	req, _ := http.NewRequest(http.MethodPut, endpointRegister, nil)
 	client.Do(req)
