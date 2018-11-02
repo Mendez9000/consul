@@ -1,4 +1,4 @@
-package discoveryServiceNode
+package main
 
 import (
 	"bytes"
