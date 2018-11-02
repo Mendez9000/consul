@@ -18,6 +18,8 @@ var timestamp string
 var webClient *http.Client
 var port int
 
+var serverIp = "192.168.15.160"
+
 func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, timestamp)
 }
@@ -46,7 +48,7 @@ func main() {
 }
 
 func doRegistration(service Service) {
-	endpointRegister := "http://192.168.14.163:8500/v1/agent/service/register"
+	endpointRegister := "http://" + serverIp + ":8500/v1/agent/service/register"
 
 	d, _ := json.Marshal(service)
 
@@ -63,7 +65,7 @@ func doRegistration(service Service) {
 }
 
 func doDeregister(service Service) {
-	endpointRegister := "http://192.168.14.163:8500/v1/agent/service/deregister/" + service.ID
+	endpointRegister := "http://" + serverIp + ":8500/v1/agent/service/deregister/" + service.ID
 	client := &http.Client{}
 	req, _ := http.NewRequest(http.MethodPut, endpointRegister, nil)
 	client.Do(req)
