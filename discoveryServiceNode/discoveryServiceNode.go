@@ -1,4 +1,4 @@
-package discoveryCheckHealth
+package discoveryServiceNode
 
 import (
 	"bytes"
