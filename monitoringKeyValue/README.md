@@ -47,3 +47,6 @@ http://localhost:8500/ui/
 #Enviar cambios a consul
 curl     --request PUT     --data '26'     http://localhost:8500/v1/kv/app1/config/secureModeLevel
 ~
+
+
+

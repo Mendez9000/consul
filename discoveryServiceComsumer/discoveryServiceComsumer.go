@@ -11,6 +11,17 @@ import (
 // dig @172.17.0.2 -p 8600 orders.service.dc1.consul SRV
 // dig +noall +answer -t aaaa @172.17.0.2 -p 8600 orders.service.dc1.consul SRV
 
+/*
+go get github.com/Mendez9000/consul/discoveryServiceNode
+cd /go/src/github.com/Mendez9000/consul/discoveryServiceNode
+go run discoveryServiceNode.go
+
+git pull
+go run discoveryServiceNode.go
+
+
+*/
+
 func main() {
 	resp, _ := http.Get("http://localhost:8500/v1/catalog/service/orders")
 	bodyBytes, _ := ioutil.ReadAll(resp.Body)
