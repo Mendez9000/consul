@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"math/rand"
 	"net"
 	"net/http"
 	"os"
@@ -26,8 +25,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	port = 8081
-	timestamp = "node_" + strconv.Itoa(rand.Intn(9000000))
+	port = 8080
+	timestamp = strconv.FormatInt(time.Now().UTC().UnixNano(), 10)
 	http.HandleFunc("/", handler)
 	localIp := "http://" + GetOutboundIP().String()
 	httpCheck := HttpCheck{Http: localIp + ":" + strconv.Itoa(port), Method: "POST", Interval: "4s"}
