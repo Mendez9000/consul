@@ -3,15 +3,30 @@ docker rm c1
 docker rm c2
 docker rm c3
 docker run -d --name=c1 -p 8500:8500 consul agent -dev -client=0.0.0.0 -bind=0.0.0.0
-ifconfig ver (docker0)
+#ifconfig ver (docker0)
 
 IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' c1); echo $IP
 docker run -d --name c2 consul agent -dev -bind=0.0.0.0 -join=$IP
 docker run -d --name c3 consul agent -dev -bind=0.0.0.0 -join=$IP
 
-
-#Ver que pasa en consul
+docker exec -ti c1 /bin/sh
 consul monitor
+
+docker exec -ti c2 /bin/sh
+apk add git
+apk add go
+apk add libc-dev
+go get github.com/Mendez9000/consul/discoveryServiceNode
+cd ~/go/src/github.com/Mendez9000/consul/discoveryServiceNode
+go run discoveryServiceNode.go
+
+docker exec -ti c3 /bin/sh
+apk add git
+apk add go
+apk add libc-dev
+go get github.com/Mendez9000/consul/discoveryServiceNode
+cd ~/go/src/github.com/Mendez9000/consul/discoveryServiceNode
+go run discoveryServiceNode.go
 
 #**************************************************************************************
 #Configurar watcher a servicio

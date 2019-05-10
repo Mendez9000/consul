@@ -5,6 +5,7 @@ import (
 	consulapi "github.com/hashicorp/consul/api"
 	"log"
 	"net/http"
+	"time"
 )
 
 var c1_IP = "172.17.0.1"
@@ -25,6 +26,8 @@ func loadConfiguration() {
 		fmt.Println(err)
 		return
 	}
+
+	fmt.Println(time.Now().UnixNano())
 
 	kv := consul.KV()
 	kvp, _, err1 := kv.Get("app1/config/secureModeLevel", nil)
