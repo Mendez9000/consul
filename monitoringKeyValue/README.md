@@ -1,4 +1,10 @@
+docker stop $(docker ps -aq)
+docker rm c1
+docker rm c2
+docker rm c3
 docker run -d --name=c1 -p 8500:8500 consul agent -dev -client=0.0.0.0 -bind=0.0.0.0
+ifconfig ver (docker0)
+
 IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' c1); echo $IP
 docker run -d --name c2 consul agent -dev -bind=0.0.0.0 -join=$IP
 docker run -d --name c3 consul agent -dev -bind=0.0.0.0 -join=$IP

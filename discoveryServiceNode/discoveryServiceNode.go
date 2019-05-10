@@ -18,7 +18,8 @@ var timestamp string
 var webClient *http.Client
 var port int
 
-var serverIp = "192.168.14.163"
+//var serverIp = "192.168.14.163"
+var serverIp = "172.17.0.1"
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, timestamp)

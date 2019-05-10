@@ -7,6 +7,8 @@ import (
 	"net/http"
 )
 
+var c1_IP = "172.17.0.1"
+
 func main() {
 	loadConfiguration()
 	http.HandleFunc("/watch-conf", watchConfHandler)
@@ -16,7 +18,7 @@ func main() {
 
 func loadConfiguration() {
 	config := consulapi.DefaultConfig()
-	config.Address = "172.17.0.2:8500"
+	config.Address = c1_IP + ":8500"
 	consul, err := consulapi.NewClient(config)
 
 	if err != nil {
